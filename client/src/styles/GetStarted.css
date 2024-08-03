@@ -3,9 +3,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
+body {
+    font-family: Arial, sans-serif;
+}
 
 .header {
     min-height: 100vh;
@@ -16,15 +18,46 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-image 1.5s ease-in-out;
-    background-color: black;
+    animation: change 10s infinite ease-in-out;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Black with 50% opacity */
+    z-index: 0; /* Ensures the overlay is behind the content */
+}
+
+@keyframes change {
+    0% {
+        background-image: url('../GetStartedAssets/image1.jpg');
+    }
+    20% {
+        background-image: url('../GetStartedAssets/image2.webp');
+    }
+    40% {
+        background-image: url('../GetStartedAssets/image3.jpg');
+    }
+    60% {
+        background-image: url('../GetStartedAssets/image4.jpg');
+    }
+    80% {
+        background-image: url('../GetStartedAssets/image5.jpg');
+    }
+    100% {
+        background-image: url('../GetStartedAssets/image6.webp');
+    }
 }
 
 .text-box {
     width: 90%;
     color: #fff;
     text-align: center;
-    z-index: 1;
+    z-index: 1; /* Ensure text appears above the overlay */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -55,7 +88,9 @@
 }
 
 .hero-btn:hover {
-    border: 1px solid #45080b;
-    background: #e10a15;
+    border: 2px solid black;
+    /* #45080b; */
+    background: rgb(78, 67, 240);
+    /* #e10a15; */
     transition: 0.5s;
 }
