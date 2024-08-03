@@ -9,6 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<GetStarted />} />
+          <Route path="/getInfo" element={<getInfo />} />
           <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
