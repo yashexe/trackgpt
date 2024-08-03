@@ -6,9 +6,6 @@
     
 }
 
-body{
-    background-color: black;
-}
 
 .header {
     min-height: 100vh;
@@ -20,6 +17,7 @@ body{
     align-items: center;
     justify-content: center;
     transition: background-image 1.5s ease-in-out;
+    background-color: black;
 }
 
 .text-box {
