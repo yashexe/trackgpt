@@ -1,0 +1,69 @@
+.gpt-response {
+    display: block;
+    text-align: left; /* Align text to the left for readability */
+    max-width: 700px; /* Match the max-width of the textarea */
+    width: 100%;
+    margin: 20px auto; /* Center and add margin for spacing */
+    color: #ccc;
+    font-weight: bold;
+    white-space: pre-wrap; /* Preserve whitespace and enable word wrap */
+    word-wrap: break-word; /* Break long words to prevent overflow */
+  }
+  
+  .chatbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  .chatbox-form {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    margin-top: 10px; /* Spacing between response and form */
+  }
+  
+  textarea {
+    flex: 1;
+    max-width: 700px; /* Set a max-width for consistency */
+    max-height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background-color: #333;
+    color: #ccc;
+    font-size: 20px;
+    border: 1px solid #282424;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+  
+  .input-button, .input-button-highlighted {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #ccc;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid #282424;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: ease-in 0.125s;
+    align-self: center;
+  }
+  
+  .input-button-highlighted {
+    background-color: #ccc;
+    color: rgb(37, 36, 36);
+  }
+  
+  button:hover {
+    background-color: #ccc;
+    color: rgb(37, 36, 36);
+  }
