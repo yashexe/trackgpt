@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = 'https://api.openai.com/v1/chat/completions';
 
 export const getOpenAIResponse = async (prompt) => {
@@ -8,8 +8,8 @@ export const getOpenAIResponse = async (prompt) => {
     const response = await axios.post(
       API_URL,
       {
-        model: 'gpt-3.5-turbo', // Specify the model here
-        messages: [{ role: 'user', content: prompt }], // Adjust for chat model
+        model: 'gpt-3.5-turbo', 
+        messages: [{ role: 'user', content: prompt },{ role: 'system', content: "You are a financial Advisor. Please only respond to questions related to finance." }], 
         max_tokens: 100,
         temperature: 0.5, 
       },

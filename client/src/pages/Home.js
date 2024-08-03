@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import axios from 'axios'; // For making API calls
+import '../styles/ChatIcon.css'
+
+import {ChatIcon} from '../components/ChatIcon'
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
@@ -145,6 +148,7 @@ export const Home = () => {
         <button onClick={chatWithExpenses} className="px-4 py-2 bg-blue-500 text-white rounded">Analyze Expenses</button>
         <p className="mt-2">{chatResponse}</p>
       </div>
+      <ChatIcon/>
     </div>
   );
 };

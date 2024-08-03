@@ -34,22 +34,22 @@ body {
 
 @keyframes change {
     0% {
-        background-image: url('../GetStartedAssets/image1.jpg');
+        background-image: url('../assets/GetStarted/image1.jpg');
     }
     20% {
-        background-image: url('../GetStartedAssets/image2.webp');
+        background-image: url('../assets/GetStarted/image2.webp');
     }
     40% {
-        background-image: url('../GetStartedAssets/image3.jpg');
+        background-image: url('../assets/GetStarted/image3.jpg');
     }
     60% {
-        background-image: url('../GetStartedAssets/image4.jpg');
+        background-image: url('../assets/GetStarted/image4.jpg');
     }
     80% {
-        background-image: url('../GetStartedAssets/image5.jpg');
+        background-image: url('../assets/GetStarted/image5.jpg');
     }
     100% {
-        background-image: url('../GetStartedAssets/image6.webp');
+        background-image: url('../assets/GetStarted/image6.webp');
     }
 }
 
