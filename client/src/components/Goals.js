@@ -19,7 +19,7 @@ export const Goals = ({setGoals})=>{
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        sx={{ boxShadow: 3, p: 2 }} // optional padding
+        sx={{ boxShadow: 3, p: 3, marginRight: 2 }} // optional padding
       >
         <Typography variant="h6">Budget Goals</Typography>
 
