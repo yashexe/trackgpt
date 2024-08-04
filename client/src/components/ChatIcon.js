@@ -60,7 +60,9 @@ export const ChatIcon = () => {
             {visibility &&  (
                 <div className="chat-menu">
                     <div className="gpt-response">
-                        {response ? response : ''}
+                      {response.split('\n').map((line, index) => (
+                        <p key={index}>{line}<br/></p>
+                      ))}
                     </div>
                     <form onSubmit={handleSubmit} className="chatbox-form">
                         <textarea
