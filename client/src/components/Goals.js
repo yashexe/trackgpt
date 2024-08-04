@@ -27,15 +27,11 @@ export const Goals = ({setGoals})=>{
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        sx={{ boxShadow: 3, p: 2 }} // optional padding
+        sx={{ boxShadow: 3, p: 2,bgcolor:'red'}} // optional padding
       >
         <Typography variant="h6">Budget Goals</Typography>
 
         <div className='row-entry'> 
-        {/* <Input
-            id="monthly-salary" label="Monthly Salary" onChange={handleSalaryChange}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          /> */}
             <TextField onChange={handleSalaryChange}
             id="monthly-salary"
             label="Monthly Salary"
@@ -45,10 +41,6 @@ export const Goals = ({setGoals})=>{
         </div>
 
         <div className='row-entry'>
-        {/* <Input
-            id="budget-goal" label="Budget Goal" onChange={handleGoalChange}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          /> */}
         <TextField
          onChange={handleGoalChange}
           id="budget-goal"

@@ -19,7 +19,7 @@ export const Home = () => {
 const [expenses, setExpenses] = useState([]);
 
   const [newExpense, setNewExpense] = useState({ description: '', amount: '', category: '' });
-  const [chatResponse, setChatResponse] = useState('');
+
 
   const prompt=""; // API prompt with user data
 
@@ -51,25 +51,28 @@ const [expenses, setExpenses] = useState([]);
   return (
     <div className='scroll' style={{display: 'flex' }}>
       <Header/>
-      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '64px'}}>
-        <Grid container spacing={2} >
+      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '64px', bgcolor:'black'}}>
+        <Grid container spacing={2} sx={{alignContent:'center'}} >
           
          {/* Set User Goals */}
           <Grid item xs={4} >
             <Goals setGoals={setGoals} />
           </Grid>
-          
           {/* Top-RIght Corner*/}
           <Grid item sm={8}  className="budget"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center" 
-        sx={{ boxShadow: 3, paddingLeft:3}}>
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    paddingLeft: 2,
+                    boxShadow: 3,
+                    mb: 2 // Add margin-bottom to create space below this grid item
+                  }}>
           <div className="border p-4 rounded" flexDirection="center" alignItems="center" justifyContent="center">
-          <h3 className="text-lg font-bold mb-2">Goal Progress</h3>
-          <div className="flex justify-center items-center h-full">
-            <div style={{ width: 200, height: 200 }}>
+          <h3 className="text-lg font-bold mb-2" >Goal Progress</h3>
+          <div className="flex justify-center items-center h-full ">
+            <div style={{ width: 200, height: 200, paddingtop:10  }}>
               <ReactSpeedometer
                 value={goalProgress}
                 minValue={0}
@@ -126,8 +129,10 @@ const [expenses, setExpenses] = useState([]);
           {/* Entire Expense List */}
           <Grid item sm={6} >
           <Box padding={2}>
+            <TableContainer component={Paper}       sx={{
+        maxHeight: 400, // Set the height you want
+        overflowY: 'auto'}}> 
             <Typography variant="h6">Expenses Table</Typography>
-            <TableContainer component={Paper}>
               <Table>
                 <TableHead>
                   <TableRow>
@@ -150,7 +155,7 @@ const [expenses, setExpenses] = useState([]);
           </Box>
           </Grid>
           {/* Categories Breakdowns*/}
-        <Grid item sm={8}        
+        <Grid item sm={6}        
         flexDirection="column"
     >
               <h3 className="text-lg font-bold mb-2">Expense Categories</h3>
