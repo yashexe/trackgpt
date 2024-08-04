@@ -16,7 +16,7 @@ export const Home = () => {
   const addExpense = () => {
     if (newExpense.description && newExpense.amount && newExpense.category) {
       setExpenses([...expenses, { ...newExpense, amount: parseFloat(newExpense.amount) }]);
-      setSubmitExpense(newExpense); // Set the expense to be submitted
+      setSubmitExpense(newExpense); 
       setNewExpense({ description: '', amount: '', category: '' });
     }
   };

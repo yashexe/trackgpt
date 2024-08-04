@@ -5,12 +5,17 @@ const API_URL = 'https://api.openai.com/v1/chat/completions';
 
 export const getOpenAIResponse = async (prompt) => {
   try {
+    console.log(prompt)
     const response = await axios.post(
       API_URL,
       {
         model: 'gpt-3.5-turbo', 
-        messages: [{ role: 'user', content: prompt },{ role: 'system', content: "You are a financial Advisor. Please only respond to questions related to finance." }], 
-        max_tokens: 100,
+        messages: [{ role: 'user', content: prompt },
+          { role: 'system',
+            content: "You are a financial advisor with expertise in personal finance. Your goal is to provide tailored, actionable advice based on the user's financial goals, risk tolerance, and current financial situation. Always ensure to offer clear, concise, and well-researched recommendations, and when necessary, suggest seeking professional consultation for complex financial matters."
+          }
+        ], 
+        max_tokens: 200,
         temperature: 0.5, 
       },
       {

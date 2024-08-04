@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import ChatPNG from '../assets/Home/chatbot.png';
 
@@ -14,14 +15,36 @@ export const ChatIcon = () => {
     const toggleChat = () => SetVisibility(!visibility)
   
     const handleSubmit = async e => {
-      e.preventDefault()
-      setInput('')
+      e.preventDefault();
+      setInput('');
+    
       if (input.trim() === '') return;
     
-      const result = await getOpenAIResponse(input);
+      const fetchedExpenses = await fetchExpenses();
+    
+      const expensesText = fetchedExpenses.map(expense => (
+        `Name: ${expense.description}\nCost: ${expense.amount}\nCategory: ${expense.category}\n`
+      )).join('\n');
+    
+      const updatedInput = `${input}\n\nFormatted SQLite Data:\n${expensesText}`;
+    
+      const result = await getOpenAIResponse(updatedInput);
       setResponse(result);
     };
+    
   
+    const fetchExpenses = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/expenses')
+        console.log('Fetched Expenses:', response.data)
+        return response.data
+      } catch (error) {
+        console.error('Error fetching expenses:', error)
+        return []
+      }
+    };
+    
+    
     const handleKeyDown = (e) => {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();

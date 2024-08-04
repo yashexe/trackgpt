@@ -3,12 +3,12 @@ import sqlite3
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS to allow requests from different origins
+CORS(app)
 DATABASE = 'expenses.db'
 
 def get_db():
     conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row  # Allows access to columns by name
+    conn.row_factory = sqlite3.Row
     return conn
 
 def init_db():
