@@ -60,7 +60,7 @@ const [expenses, setExpenses] = useState([]);
           </Grid>
           
           {/* Top-RIght Corner*/}
-          <Grid item sm={8}         className="budget"
+          <Grid item sm={8}  className="budget"
         display="flex"
         flexDirection="column"
         alignItems="center"
