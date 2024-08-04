@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'; 
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis } from 'recharts';
 import { Grid, TextField, Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import ReactSpeedometer from 'react-d3-speedometer';
+import ReactSpeedometer from 'react-d3-speedometer'
 
-import '../styles/ChatIcon.css';
+import '../styles/ChatIcon.css'
 
-import { ChatIcon } from '../components/ChatIcon';
-import { Header } from '../components/Header';
-import { Goals } from '../components/Goals';
+import { ChatIcon } from '../components/ChatIcon'
+import { Header } from '../components/Header'
+import { Goals } from '../components/Goals'
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
@@ -62,7 +62,7 @@ export const Home = () => {
   return (
     <div style={{ display: 'flex' }}>
       <Header />
-      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '64px' }}>
+      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '75px' }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <Goals setGoals={setGoals} />
@@ -96,7 +96,7 @@ export const Home = () => {
           <Grid item sm={12}>
             <form>
               <Box className="budget" display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ boxShadow: 3, p: 2 }}>
-                <Typography variant="h6">Add Expenses </Typography>
+                <Typography variant="h6">Add Expenses</Typography>
                 
                 <div className='row-entry'> 
                   <TextField
@@ -108,7 +108,7 @@ export const Home = () => {
                   <TextField 
                     onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })}
                     id="item-amount"
-                    label="Cost"
+                    label="Cost ($)"
                     variant="standard"
                     sx={{ my: 2 }} />
                   <TextField 
@@ -118,7 +118,7 @@ export const Home = () => {
                     variant="standard"
                     sx={{ my: 2 }} />
                 </div>
-                <Button onClick={addExpense}>Add</Button>
+                <Button className="add-expense-button" onClick={addExpense}>Add</Button>
               </Box>
             </form>
           </Grid>
@@ -130,8 +130,8 @@ export const Home = () => {
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>Description</TableCell>
-                      <TableCell>Cost</TableCell>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Cost ($)</TableCell>
                       <TableCell>Category</TableCell>
                     </TableRow>
                   </TableHead>
