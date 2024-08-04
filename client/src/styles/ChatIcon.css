@@ -5,6 +5,7 @@ img {
     background-color: rgb(81, 88, 146);
     padding: 5px;
     border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box-shadow */
 }
 
 .chat-icon {
@@ -14,6 +15,14 @@ img {
     cursor: pointer;
     z-index: 1001;
 }
+
+.chat-icon img:hover {
+  transform: scale(1.1); /* Slightly enlarges the icon */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adds a shadow */
+}
+
+
+
 .chat-menu {
     position: fixed;
     bottom: 100px;
@@ -27,6 +36,7 @@ img {
     z-index: 1000;
     display: flex;
     flex-direction: column;
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
 }
 .gpt-response {
   flex-grow: 1;
@@ -64,6 +74,7 @@ img {
     border: none;
     border-radius: 20px;
     margin: 7px;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   .input-button, .input-button-highlighted {
     padding: 10px 20px;
@@ -77,6 +88,7 @@ img {
     cursor: pointer;
     transition: ease-in 0.125s;
     align-self: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   .input-button-highlighted {

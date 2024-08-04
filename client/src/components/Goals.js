@@ -19,9 +19,11 @@ export const Goals = ({setGoals})=>{
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        sx={{ boxShadow: 3, p: 3, marginRight: 2 }} // optional padding
+        sx={{ boxShadow: 3, p: 3, marginRight: 2 , marginTop: -2 }} // optional padding
+
+        // This was the Budget Goals Thingy
       >
-        <Typography variant="h6">Budget Goals</Typography>
+        <Typography variant="h6">Budget Goals  </Typography>
 
         <div className='row-entry'> 
           <TextField onChange={handleSalaryChange}
