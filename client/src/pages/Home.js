@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; 
-import { PieChart, Pie, Cell, ResponsiveContainer,Tooltip, Legend,  BarChart, Bar, XAxis, YAxis  } from 'recharts';
-import { Grid, TextField, Box, Typography, Button,  Table, TableBody, TableCell, TableContainer, TableHead, TableRow,  Paper } from '@mui/material';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis } from 'recharts';
+import { Grid, TextField, Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import ReactSpeedometer from 'react-d3-speedometer';
 
 import '../styles/ChatIcon.css';
 
 import { ChatIcon } from '../components/ChatIcon';
-import { Header }from '../components/Header';
+import { Header } from '../components/Header';
 import { Goals } from '../components/Goals';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
 export const Home = () => {
-  const [goals,setGoals] = useState( {goal: 1000, salary: 0} );
+  const [goals, setGoals] = useState({ goal: 1000, salary: 0 });
   const [expenses, setExpenses] = useState([]);
   const [newExpense, setNewExpense] = useState({ description: '', amount: '', category: '' });
   const [submitExpense, setSubmitExpense] = useState(null);
@@ -24,6 +24,7 @@ export const Home = () => {
       setSubmitExpense(newExpense);
     }
   };
+
   useEffect(() => {
     const sendExpensesToServer = async () => {
       try {
@@ -40,7 +41,7 @@ export const Home = () => {
       }
     };
     sendExpensesToServer();
-  }, [submitExpense]); 
+  }, [submitExpense]);
 
   const totalExpenses = expenses.reduce((sum, expense) => sum + expense.amount, 0);
 
@@ -59,11 +60,11 @@ export const Home = () => {
   ];
 
   return (
-    <div style={{display: 'flex' }}>
-      <Header/>
-      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '64px'}}>
-        <Grid container spacing={2} >
-          <Grid item xs={4} >
+    <div style={{ display: 'flex' }}>
+      <Header />
+      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '64px' }}>
+        <Grid container spacing={2}>
+          <Grid item xs={4}>
             <Goals setGoals={setGoals} />
           </Grid>
           <Grid item xs className="budget"
@@ -71,13 +72,12 @@ export const Home = () => {
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
-        
-            sx={{ boxShadow: 3, paddingLeft:3}}
+            sx={{ boxShadow: 3, paddingLeft: 3 }}
           >
             <div flexDirection="center" alignItems="center" justifyContent="center">
               <h3>Goal Progress</h3>
               <div>
-                <div style={{height: 200 }}>
+                <div style={{ height: 200 }}>
                   <ReactSpeedometer
                     value={goalProgress}
                     minValue={0}
@@ -93,26 +93,26 @@ export const Home = () => {
             </div>
           </Grid>
 
-          <Grid item sm={12} >
+          <Grid item sm={12}>
             <form>
               <Box className="budget" display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ boxShadow: 3, p: 2 }}>
                 <Typography variant="h6">Add Expenses </Typography>
                 
                 <div className='row-entry'> 
                   <TextField
-                    onChange={(e) => setNewExpense({...newExpense, description: e.target.value})}
+                    onChange={(e) => setNewExpense({ ...newExpense, description: e.target.value })}
                     id="item-name"
                     label="Name"
                     variant="standard"
                     sx={{ my: 2 }} />
                   <TextField 
-                    onChange={(e) => setNewExpense({...newExpense, amount: e.target.value})}
+                    onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })}
                     id="item-amount"
                     label="Cost"
                     variant="standard"
                     sx={{ my: 2 }} />
                   <TextField 
-                    onChange={(e) => setNewExpense({...newExpense, category: e.target.value})}
+                    onChange={(e) => setNewExpense({ ...newExpense, category: e.target.value })}
                     id="item-category"
                     label="Category"
                     variant="standard"
@@ -123,8 +123,8 @@ export const Home = () => {
             </form>
           </Grid>
 
-          <Grid item sm={6} >
-            <Box >
+          <Grid item sm={6}>
+            <Box sx={{ maxHeight: 550, overflowY: 'scroll' }}>
               <TableContainer component={Paper}>
                 <Typography variant="h6">Expenses Table</Typography>
                 <Table>
@@ -148,6 +148,7 @@ export const Home = () => {
               </TableContainer>
             </Box>
           </Grid>
+
           <Grid item sm={6} flexDirection="column">
             <Box sx={{ boxShadow: 3, padding: 2, marginBottom: 2 }}>
               <Typography variant="h6">Expense Categories</Typography>
@@ -185,44 +186,9 @@ export const Home = () => {
               </ResponsiveContainer>
             </Box>
           </Grid>
-
-          {/*
-          
-          <Grid item sm={6} flexDirection="column">
-            <h3>Expense Categories</h3>
-            <ResponsiveContainer width="100%" height={200}>
-              <PieChart margin={{ bottom: 0 }}>
-                <Pie
-                  data={pieChartData}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  outerRadius={80}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {pieChartData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend verticalAlign="bottom" height={16} />
-              </PieChart>
-            </ResponsiveContainer>
-            <h3>Salary vs Expenses</h3>
-            <ResponsiveContainer width="100%" height={200}>
-              <BarChart data={barChartData}>
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="value" fill="#82ca9d" />
-              </BarChart>
-            </ResponsiveContainer>
-          </Grid> */}
         </Grid>
       </Box>
-      <ChatIcon/>
+      <ChatIcon />
     </div>
   );
 };
