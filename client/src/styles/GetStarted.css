@@ -94,3 +94,11 @@ body {
     /* #e10a15; */
     transition: 0.5s;
 }
+
+
+.financial-tip-header {
+    margin-top: 100px;
+    padding: 0px !important;
+    width: 80% !important;
+    font-style: italic;
+}
