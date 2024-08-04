@@ -112,7 +112,7 @@ export const Home = () => {
             <TextField 
             onChange={(e) => setNewExpense({...newExpense, amount: e.target.value})}
             id="item-amount"
-            label="Amount"
+            label="Cost"
             variant="standard"
             sx={{ my: 2 }} />
 
@@ -137,7 +137,7 @@ export const Home = () => {
                 <TableHead>
                   <TableRow>
                     <TableCell>Description</TableCell>
-                    <TableCell>Amount</TableCell>
+                    <TableCell>Cost</TableCell>
                     <TableCell>Category</TableCell>
                   </TableRow>
                 </TableHead>
