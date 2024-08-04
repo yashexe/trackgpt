@@ -13,23 +13,23 @@ export const Goals = ({setGoals})=>{
         }));
       };
     return(
-        <Box
-          className="budget"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          sx={{ boxShadow: 3, p: 2 }} // optional padding
-        >
+      <Box
+        className="budget"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ boxShadow: 3, p: 2 }} // optional padding
+      >
         <Typography variant="h6">Budget Goals</Typography>
 
         <div className='row-entry'> 
-            <TextField onChange={handleSalaryChange}
-              id="monthly-salary"
-              label="Monthly Salary"
-              variant="standard"
-              sx={{ my: 2 }}
-            />
+          <TextField onChange={handleSalaryChange}
+            id="monthly-salary"
+            label="Monthly Salary"
+            variant="standard"
+            sx={{ my: 2 }}
+          />
         </div>
         <div className='row-entry'>
           <TextField
@@ -41,5 +41,5 @@ export const Goals = ({setGoals})=>{
           />
         </div>
       </Box>
-    )
+    );
 }

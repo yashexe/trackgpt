@@ -33,14 +33,14 @@ export const Home = () => {
             amount: submitExpense.amount,
             category: submitExpense.category
           });
-          setSubmitExpense(null); // Clear submit state after successful submission
+          setSubmitExpense(null);
         }
       } catch (error) {
         console.error('Error saving expenses:', error);
       }
     };
     sendExpensesToServer();
-  }, [submitExpense]); // Dependency array includes submitExpense to trigger effect on submission
+  }, [submitExpense]); 
 
   const totalExpenses = expenses.reduce((sum, expense) => sum + expense.amount, 0);
 
@@ -59,106 +59,98 @@ export const Home = () => {
   ];
 
   return (
-    <div className='scroll' style={{display: 'flex' }}>
+    <div style={{display: 'flex' }}>
       <Header/>
       <Box sx={{ flexGrow: 1, padding: 2, marginTop: '64px'}}>
         <Grid container spacing={2} >
-          
-         {/* Set User Goals */}
           <Grid item xs={4} >
             <Goals setGoals={setGoals} />
           </Grid>
-          
-          {/* Top-RIght Corner*/}
-          <Grid item sm={8}  className="budget"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center" 
-        sx={{ boxShadow: 3, paddingLeft:3}}>
-          <div className="border p-4 rounded" flexDirection="center" alignItems="center" justifyContent="center">
-          <h3 className="text-lg font-bold mb-2">Goal Progress</h3>
-          <div className="flex justify-center items-center h-full">
-            <div style={{ width: 200, height: 200 }}>
-              <ReactSpeedometer
-                value={goalProgress}
-                minValue={0}
-                maxValue={100}
-                needleColor="steelblue"
-                startColor="red"
-                segments={10}
-                endColor="green"
-                currentValueText={`${goalProgress.toFixed(2)}%`}
-              />
+          <Grid item xs className="budget"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+        
+            sx={{ boxShadow: 3, paddingLeft:3}}
+          >
+            <div flexDirection="center" alignItems="center" justifyContent="center">
+              <h3>Goal Progress</h3>
+              <div>
+                <div style={{height: 200 }}>
+                  <ReactSpeedometer
+                    value={goalProgress}
+                    minValue={0}
+                    maxValue={100}
+                    needleColor="steelblue"
+                    startColor="red"
+                    segments={10}
+                    endColor="green"
+                    currentValueText={`${goalProgress.toFixed(2)}%`}
+                  />
+                </div>
+              </div>
             </div>
-            </div>
-          </div>
           </Grid>
 
-          {/* Bottom-Left Corner */}
           <Grid item sm={12} >
-          <form>
-        <Box className="budget" display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ boxShadow: 3, p: 2 }}>
-            <Typography variant="h6">Add Expenses </Typography>
-            
-            <div className='row-entry'> 
-            <TextField
-            onChange={(e) => setNewExpense({...newExpense, description: e.target.value})}
-            id="item-name"
-            label="Name"
-            variant="standard"
-            sx={{ my: 2 }} />
-
-            <TextField 
-            onChange={(e) => setNewExpense({...newExpense, amount: e.target.value})}
-            id="item-amount"
-            label="Cost"
-            variant="standard"
-            sx={{ my: 2 }} />
-
-            <TextField 
-            onChange={(e) => setNewExpense({...newExpense, category: e.target.value})}
-            id="item-category"
-            label="Category"
-            variant="standard"
-            sx={{ my: 2 }} />
-            </div>
-            <Button onClick={addExpense}>Add</Button>
-      </Box>
-        </form>
+            <form>
+              <Box className="budget" display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ boxShadow: 3, p: 2 }}>
+                <Typography variant="h6">Add Expenses </Typography>
+                
+                <div className='row-entry'> 
+                  <TextField
+                    onChange={(e) => setNewExpense({...newExpense, description: e.target.value})}
+                    id="item-name"
+                    label="Name"
+                    variant="standard"
+                    sx={{ my: 2 }} />
+                  <TextField 
+                    onChange={(e) => setNewExpense({...newExpense, amount: e.target.value})}
+                    id="item-amount"
+                    label="Cost"
+                    variant="standard"
+                    sx={{ my: 2 }} />
+                  <TextField 
+                    onChange={(e) => setNewExpense({...newExpense, category: e.target.value})}
+                    id="item-category"
+                    label="Category"
+                    variant="standard"
+                    sx={{ my: 2 }} />
+                </div>
+                <Button onClick={addExpense}>Add</Button>
+              </Box>
+            </form>
           </Grid>
 
-          {/* Entire Expense List */}
           <Grid item sm={6} >
-          <Box padding={2}>
-            <Typography variant="h6">Expenses Table</Typography>
-            <TableContainer component={Paper}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Description</TableCell>
-                    <TableCell>Cost</TableCell>
-                    <TableCell>Category</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {expenses.map((expense, index) => (
-                    <TableRow key={index}>
-                      <TableCell>{expense.description}</TableCell>
-                      <TableCell>{expense.amount}</TableCell>
-                      <TableCell>{expense.category}</TableCell>
+            <Box >
+              <TableContainer component={Paper}>
+                <Typography variant="h6">Expenses Table</Typography>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Description</TableCell>
+                      <TableCell>Cost</TableCell>
+                      <TableCell>Category</TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Box>
+                  </TableHead>
+                  <TableBody>
+                    {expenses.map((expense, index) => (
+                      <TableRow key={index}>
+                        <TableCell>{expense.description}</TableCell>
+                        <TableCell>{expense.amount}</TableCell>
+                        <TableCell>{expense.category}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Box>
           </Grid>
-          {/* Categories Breakdowns*/}
-        <Grid item sm={8}        
-        flexDirection="column"
-    >
-              <h3 className="text-lg font-bold mb-2">Expense Categories</h3>
+          <Grid item sm={6} flexDirection="column">
+            <Box sx={{ boxShadow: 3, padding: 2, marginBottom: 2 }}>
+              <Typography variant="h6">Expense Categories</Typography>
               <ResponsiveContainer width="100%" height={200}>
                 <PieChart margin={{ bottom: 0 }}>
                   <Pie
@@ -178,17 +170,56 @@ export const Home = () => {
                   <Legend verticalAlign="bottom" height={16} />
                 </PieChart>
               </ResponsiveContainer>
-              <h3 className="text-lg font-bold mb-2">Salary vs Expenses</h3>
-        <ResponsiveContainer width="100%" height={200}>
-          <BarChart data={barChartData}>
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="value" fill="#82ca9d" />
-          </BarChart>
-        </ResponsiveContainer>
+            </Box>
+
+            <Box sx={{ boxShadow: 3, padding: 2 }}>
+              <Typography variant="h6">Salary vs Expenses</Typography>
+              <ResponsiveContainer width="100%" height={200}>
+                <BarChart data={barChartData}>
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="value" fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+            </Box>
           </Grid>
+
+          {/*
+          
+          <Grid item sm={6} flexDirection="column">
+            <h3>Expense Categories</h3>
+            <ResponsiveContainer width="100%" height={200}>
+              <PieChart margin={{ bottom: 0 }}>
+                <Pie
+                  data={pieChartData}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {pieChartData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend verticalAlign="bottom" height={16} />
+              </PieChart>
+            </ResponsiveContainer>
+            <h3>Salary vs Expenses</h3>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={barChartData}>
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="value" fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>
+          </Grid> */}
         </Grid>
       </Box>
       <ChatIcon/>

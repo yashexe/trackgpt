@@ -53,33 +53,33 @@ export const ChatIcon = () => {
     };
   
     return (
-        <div className='chat-icon'>
-            <div className="chat-icon">
-                <img src={ChatPNG} alt="Chat Icon" onClick={toggleChat}/>
-            </div>
-            {visibility &&  (
-                <div className="chat-menu">
-                    <div className="gpt-response">
-                      {response.split('\n').map((line, index) => (
-                        <p key={index}>{line}<br/></p>
-                      ))}
-                    </div>
-                    <form onSubmit={handleSubmit} className="chatbox-form">
-                        <textarea
-                            id="promptarea"
-                            placeholder="Enter your prompt here."
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        />
-                        <button type="submit"
-                            className={input ? 'input-button-highlighted' : 'input-button'}
-                        >
-                            Submit
-                        </button>
-                    </form>
-                </div>
-            )}
+      <div className='chat-icon'>
+        <div className="chat-icon">
+            <img src={ChatPNG} alt="Chat Icon" onClick={toggleChat}/>
         </div>
+        {visibility &&  (
+          <div className="chat-menu">
+            <div className="gpt-response">
+              {response.split('\n').map((line, index) => (
+                <p key={index}>{line}<br/></p>
+              ))}
+            </div>
+            <form onSubmit={handleSubmit} className="chatbox-form">
+              <textarea
+                id="promptarea"
+                placeholder="Enter your prompt here."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              <button type="submit"
+                className={input ? 'input-button-highlighted' : 'input-button'}
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
     );
 };
