@@ -17,18 +17,9 @@ export const ChatIcon = () => {
       e.preventDefault()
       setInput('')
       if (input.trim() === '') return;
-      try {
-        setTimeout(async () => {
-          try {
-            const result = await getOpenAIResponse(input);
-            setResponse(result);
-          } catch (error) {
-            console.error('Error fetching GPT response:', error);
-          }
-        }, 100); // 100ms delay
-      } catch (error) {
-        console.error('Error adding user bubble:', error);
-      }
+    
+      const result = await getOpenAIResponse(input);
+      setResponse(result);
     };
   
     const handleKeyDown = (e) => {

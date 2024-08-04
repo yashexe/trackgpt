@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import '../styles/ChatIcon.css';
 import axios from 'axios'; // For making API calls
-import '../styles/ChatIcon.css'
 
-import {ChatIcon} from '../components/ChatIcon'
+import { ChatIcon } from '../components/ChatIcon';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
@@ -11,11 +11,12 @@ export const Home = () => {
   const [expenses, setExpenses] = useState([]);
   const [goal, setGoal] = useState(1000);
   const [newExpense, setNewExpense] = useState({ description: '', amount: '', category: '' });
-  const [chatResponse, setChatResponse] = useState('');
+  const [submitExpense, setSubmitExpense] = useState(null); // New state to track expense submission
 
   const addExpense = () => {
     if (newExpense.description && newExpense.amount && newExpense.category) {
       setExpenses([...expenses, { ...newExpense, amount: parseFloat(newExpense.amount) }]);
+      setSubmitExpense(newExpense); // Set the expense to be submitted
       setNewExpense({ description: '', amount: '', category: '' });
     }
   };
@@ -30,26 +31,26 @@ export const Home = () => {
   const pieChartData = Object.entries(categoryData).map(([name, value]) => ({ name, value }));
 
   const goalProgress = Math.min((totalExpenses / goal) * 100, 100);
+  
+  useEffect(() => {
+    const sendExpensesToServer = async () => {
+      try {
+        if (submitExpense) {
+          await axios.post('http://localhost:5000/api/expenses', {
+            description: submitExpense.description,
+            amount: submitExpense.amount,
+            category: submitExpense.category
+          });
+          setSubmitExpense(null); // Clear submit state after successful submission
+        }
+      } catch (error) {
+        console.error('Error saving expenses:', error);
+      }
+    };
 
-  const chatWithExpenses = async () => {
-    try {
-      const response = await axios.post('https://api.openai.com/v1/engines/davinci/completions', {
-        prompt: `Analyze these expenses: ${JSON.stringify(expenses)}. What are the major spending categories?`,
-        max_tokens: 150,
-        temperature: 0.5,
-      }, {
-        headers: {
-          'Authorization': `Bearer YOUR_OPENAI_API_KEY`, // Replace with your OpenAI API key
-        },
-      });
-
-      setChatResponse(response.data.choices[0].text.trim());
-    } catch (error) {
-      console.error('Error communicating with OpenAI:', error);
-      setChatResponse('There was an error analyzing your expenses.');
-    }
-  };
-
+    sendExpensesToServer();
+  }, [submitExpense]); // Dependency array includes submitExpense to trigger effect on submission
+  
   return (
     <div className="p-4 grid grid-cols-2 gap-4">
       <div className="col-span-1 border p-4 rounded">
@@ -68,7 +69,7 @@ export const Home = () => {
         <div className="w-full bg-gray-200 rounded-full h-2.5">
           <div 
             className="bg-blue-600 h-2.5 rounded-full" 
-            // style={{width: `${goalProgress}%`}}
+            style={{ width: `${goalProgress}%` }}
           ></div>
         </div>
         <p className="mt-2">{goalProgress.toFixed(2)}% of goal reached</p>
@@ -80,20 +81,20 @@ export const Home = () => {
           <input 
             placeholder="Description" 
             value={newExpense.description} 
-            onChange={(e) => setNewExpense({...newExpense, description: e.target.value})}
+            onChange={(e) => setNewExpense({ ...newExpense, description: e.target.value })}
             className="flex-1 p-2 border rounded"
           />
           <input 
             type="number" 
             placeholder="Amount" 
             value={newExpense.amount} 
-            onChange={(e) => setNewExpense({...newExpense, amount: e.target.value})}
+            onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })}
             className="flex-1 p-2 border rounded"
           />
           <input 
             placeholder="Category" 
             value={newExpense.category} 
-            onChange={(e) => setNewExpense({...newExpense, category: e.target.value})}
+            onChange={(e) => setNewExpense({ ...newExpense, category: e.target.value })}
             className="flex-1 p-2 border rounded"
           />
           <button onClick={addExpense} className="px-4 py-2 bg-blue-500 text-white rounded">Add</button>
@@ -143,12 +144,7 @@ export const Home = () => {
         </ResponsiveContainer>
       </div>
 
-      <div className="col-span-1 border p-4 rounded">
-        <h3 className="text-lg font-bold mb-2">Expense Analysis</h3>
-        <button onClick={chatWithExpenses} className="px-4 py-2 bg-blue-500 text-white rounded">Analyze Expenses</button>
-        <p className="mt-2">{chatResponse}</p>
-      </div>
-      <ChatIcon/>
+      <ChatIcon />
     </div>
   );
 };
