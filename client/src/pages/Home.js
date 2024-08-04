@@ -76,7 +76,7 @@ export const Home = () => {
             sx={{ boxShadow: 3, paddingLeft: 3, backgroundColor: 'white' }}
           >
             <div flexDirection="center" alignItems="center" justifyContent="center">
-              <h3 style={{ marginBottom: '20px' }} >Expense Monitor</h3>
+              <h6 style={{ marginBottom: '20px', fontSize:20, fontWeight: 'normal'}} >Expense Monitor</h6>
               <div>
                 <div style={{ height: 200 }}>
                   <ReactSpeedometer
