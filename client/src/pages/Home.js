@@ -125,7 +125,7 @@ export const Home = () => {
           </Grid>
 
           <Grid item sm={6}>
-            <Box sx={{ maxHeight: 550, overflowY: 'scroll', backgroundColor: 'white' }}>
+            <Box sx={{ paddingTop: 2, maxHeight: 550, overflowY: 'scroll', backgroundColor: 'white' }}>
               <TableContainer component={Paper} sx={{ backgroundColor: 'white' }}>
                 <Typography variant="h6">Expenses Table</Typography>
                 <Table>

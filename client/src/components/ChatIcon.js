@@ -67,7 +67,7 @@ export const ChatIcon = () => {
             <form onSubmit={handleSubmit} className="chatbox-form">
               <textarea
                 id="promptarea"
-                placeholder="Enter your prompt here."
+                placeholder="Ask me anything!"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
