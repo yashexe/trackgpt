@@ -60,9 +60,9 @@ export const Home = () => {
   ];
 
   return (
-    <div style={{ display: 'flex', backgroundColor: 'lightblue', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', backgroundColor: '#F2F3F3', minHeight: '100vh' }}>
       <Header />
-      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '75px', backgroundColor: 'lightblue' }}>
+      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '75px', backgroundColor: '#F2F3F3' }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <Goals setGoals={setGoals} />
