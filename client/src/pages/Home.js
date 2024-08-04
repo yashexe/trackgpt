@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis } from 'recharts';
 import { Grid, TextField, Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import ReactSpeedometer from 'react-d3-speedometer'
+import ReactSpeedometer from 'react-d3-speedometer';
 
-import '../styles/ChatIcon.css'
+import '../styles/ChatIcon.css';
 
-import { ChatIcon } from '../components/ChatIcon'
-import { Header } from '../components/Header'
-import { Goals } from '../components/Goals'
+import { ChatIcon } from '../components/ChatIcon';
+import { Header } from '../components/Header';
+import { Goals } from '../components/Goals';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
@@ -60,9 +60,9 @@ export const Home = () => {
   ];
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', backgroundColor: 'lightblue', minHeight: '100vh' }}>
       <Header />
-      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '75px' }}>
+      <Box sx={{ flexGrow: 1, padding: 2, marginTop: '75px', backgroundColor: 'lightblue' }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <Goals setGoals={setGoals} />
@@ -72,7 +72,7 @@ export const Home = () => {
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
-            sx={{ boxShadow: 3, paddingLeft: 3 }}
+            sx={{ boxShadow: 3, paddingLeft: 3, backgroundColor: 'white' }}
           >
             <div flexDirection="center" alignItems="center" justifyContent="center">
               <h3>Goal Progress</h3>
@@ -95,7 +95,7 @@ export const Home = () => {
 
           <Grid item sm={12}>
             <form>
-              <Box className="budget" display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ boxShadow: 3, p: 2 }}>
+              <Box className="budget" display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ boxShadow: 3, p: 2, backgroundColor: 'white' }}>
                 <Typography variant="h6">Add Expenses</Typography>
                 
                 <div className='row-entry'> 
@@ -124,8 +124,8 @@ export const Home = () => {
           </Grid>
 
           <Grid item sm={6}>
-            <Box sx={{ maxHeight: 550, overflowY: 'scroll' }}>
-              <TableContainer component={Paper}>
+            <Box sx={{ maxHeight: 550, overflowY: 'scroll', backgroundColor: 'white' }}>
+              <TableContainer component={Paper} sx={{ backgroundColor: 'white' }}>
                 <Typography variant="h6">Expenses Table</Typography>
                 <Table>
                   <TableHead>
@@ -150,7 +150,7 @@ export const Home = () => {
           </Grid>
 
           <Grid item sm={6} flexDirection="column">
-            <Box sx={{ boxShadow: 3, padding: 2, marginBottom: 2 }}>
+            <Box sx={{ boxShadow: 3, padding: 2, marginBottom: 2, backgroundColor: 'white' }}>
               <Typography variant="h6">Expense Categories</Typography>
               <ResponsiveContainer width="100%" height={200}>
                 <PieChart margin={{ bottom: 0 }}>
@@ -173,7 +173,7 @@ export const Home = () => {
               </ResponsiveContainer>
             </Box>
 
-            <Box sx={{ boxShadow: 3, padding: 2 }}>
+            <Box sx={{ boxShadow: 3, padding: 2, backgroundColor: 'white' }}>
               <Typography variant="h6">Salary vs Expenses</Typography>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={barChartData}>
