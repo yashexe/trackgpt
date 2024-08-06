@@ -1,19 +1,30 @@
-## Inspiration
-As university students, we often struggled to manage our own finances. A lot of money was spent without even realizing it, and small costs started to add up quickly. Recognizing this challenge, we thought of a solution that could help students like us take control of their spending. Presenting WealthHack — an intelligent tool to track expenses and manage budgets effortlessly.
+Are you a university student just getting started with the real world? Have you ever checked your expenses in the past month and realized you've spent way too much money? Have you ever wanted a way to track your expenses, but desired an assistant that understands your spending habits and helps you work towards saving more money?
 
-## What it does
-WealthHack allows users to input their daily expenses, set a budget, and track their spending against this budget. The app provides insights into spending habits, helping users stay within their financial limits and make informed decisions. It also offers personalized financial tips and reminders to help users stay on track.
+### WealthHack is the SaaS for you!
+#### Finance Management, Made Simple.
+
+WealthHack is the finance manager with a personal AI assistant that will help you:
+
+- Form better spending habits
+- Set your budget
+- Answer any financial questions you may have
+  
+Start managing your finances smarter today with WealthHack!
+
 
 ## How we built it
-We built WealthHack using a combination of front-end and back-end technologies. The front-end is powered by React, providing a seamless and interactive user interface. The back-end is developed using Flask, which handles data processing and storage. We utilized local storage for quick development during the hackathon, ensuring user data is stored securely on their device.
+Our tech stack includes React for the frontend, Node and Flask for the backend, and SQLite for efficient data management.
+
+Flask is used to create a RESTful API for managing expenses, using SQLite for efficient data storage. Looking towards the future this is a lightweight scalable solution that’s ideal for managing financial data.
+
+The project also integrates OpenAI’s 3.5-turbo model to provide personalized financial advice and tailored reccomendations based on user inputs and financial goals.
 
 ## Challenges we ran into
-Dependencies: We often lost track of the dependencies required for the FE and BE servers. This led to us keeping our Discord pins and ReadMe.md up-to-date with the latest dependencies we use in our projects.
-HTTP Requests: While Axios is a powerful tool for GET and POST requests, we ran into request errors with OpenAI API, and our backend SQLite DB. With proper CORS configuration, we were able to get past this.
-State Changes: We have multiple components passing and relying on data across our application. There was unexpected loss in data when being passed around with event handlers and hooks. Careful planning and modularization of components helped to simplify this process.
+**Dependencies:** We often lost track of the dependencies required for the FE and BE servers. This led to us keeping our Discord pins and ReadMe.md up-to-date with the latest dependencies we use in our projects.
 
-## Accomplishments that we're proud of
-We’re proud of creating a functional and user-friendly budget tracker within a short period of time. The financial tips adds an extra layer of usability that enhances the user experience. We're also proud of how the app can serve as a practical tool for students and new migrants in managing their finances.
+**HTTP Requests:** While Axios is a powerful tool for GET and POST requests, we ran into request errors with OpenAI API, and our backend SQLite DB. With proper CORS configuration, we were able to get past this.
+
+**State Changes:** We have multiple components passing and relying on data across our application. There was unexpected loss in data when being passed around with event handlers and hooks. Careful planning and modularization of components helped to simplify this process.
 
 
 ## What we learned
@@ -21,5 +32,6 @@ We’re proud of creating a functional and user-friendly budget tracker within a
 - Prompt Engineering is crucial to narrow down the result you are looking for. We learnt a lot about crafting an initial prompt for our chatbot.
 
 ## What's next for WealthHack
-Chrome Extension: Create a browser extension that assists users with online shopping by providing budget-friendly recommendations and financial advice. The extension will alert users if a purchase is within their budget or if it exceeds their financial limits.
-.csv Upload Support: Ability to upload existing excel sheets and formatted bank statements for parsing and input into the database. This will allow users to quickly seek financial support, without meticulous data entry.
+**Chrome Extension:** Create a browser extension that assists users with online shopping by providing budget-friendly recommendations and financial advice. The extension will alert users if a purchase is within their budget or if it exceeds their financial limits.
+
+**CSV Upload Support:** Ability to upload existing excel sheets and formatted bank statements for parsing and input into the database. This will allow users to quickly seek financial support, without meticulous data entry.
