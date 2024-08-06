@@ -1,7 +1,6 @@
-Are you a university student just getting started with the real world? Have you ever checked your expenses in the past month and realized you've spent way too much money? Have you ever wanted a way to track your expenses, but desired an assistant that understands your spending habits and helps you work towards saving more money?
+# WealthHack: Finance Management, Made Simple.
 
-### WealthHack is the SaaS for you!
-#### Finance Management, Made Simple.
+Are you a university student just getting started with the real world? Have you ever checked your expenses in the past month and realized you've spent way too much money? Have you ever wanted a way to track your expenses, but desired an assistant that understands your spending habits and helps you work towards saving more money?
 
 WealthHack is the finance manager with a personal AI assistant that will help you:
 
